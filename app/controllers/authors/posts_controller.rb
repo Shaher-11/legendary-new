@@ -1,14 +1,10 @@
 module Authors
   class PostsController <  AuthorsController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_post, only: [:edit, :update, :destroy]
 
     # GET /posts
     def index
-      @posts = current_author.posts.popular
-    end
-
-    # GET /posts/1
-    def show
+      @posts = current_author.posts.all
     end
 
     # GET /posts/new
