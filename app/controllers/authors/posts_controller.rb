@@ -4,7 +4,7 @@ module Authors
 
     # GET /posts
     def index
-      @posts = current_author.posts.all
+      @posts = current_author.posts.popular
     end
 
     # GET /posts/1
