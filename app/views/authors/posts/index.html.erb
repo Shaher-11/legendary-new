@@ -7,7 +7,8 @@
   <%= link_to edit_post_path(post), class: 'text-decoration-none' do %>
     <div class="card mb-4">
       <div class="card-body">
-      <h5 class="card-title mb-1 text-dark"> <%= post.title %> </h5>
+      <h6 class="card-title mb-3 text-primary">Author: <%= post.author.username %> </h6>
+      <h3 class="card-title mb-1 text-dark"> <%= post.title %> </h3>
       <p class="text-secondary mb-0"> <%= post.description %></p>
       </div>
     </div>

@@ -5,4 +5,9 @@ class Author < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
+
+  def username
+    self.email.split(/@/).first
+  end
+  
 end
