@@ -15,6 +15,11 @@
       </div>
       <% end %>
       <div class="col-md-10">
+      <% if @post.published? %>
+        <span class="badge badge-primary mb-2">Published</span>
+        <% else %>
+        <span class="badge badge-secondary mb-2">Published</span>
+        <% else %>
       <h3 class="card-title mb-1 text-dark"> <%= post.title %> </h3>
       <p class="text-secondary mb-0"> <%= post.description %></p>
       </div>

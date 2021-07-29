@@ -1,4 +1,3 @@
-
 <div class="row">
   <div class="col-md-3">
   <%= link_to 'Back', posts_path, class: 'btn btn-secondary mb-3' %>
@@ -50,9 +49,9 @@
         <%= time_ago_in_words(@post.published_at) %> ago
      <% end %>
     </div>
-    <div class="card-body pt-5">
+    <div class="card-body pt-5" data-controller="elments">
 
-      <ul id="elements">
+      <ul id='elements' data-action="drop->elements#sort" >
 
         <% @post.elements.each do |element| %>
     <% if element.persisted? %>
@@ -60,7 +59,7 @@
     <div class="mb-4 p-3 paragraph">
     <div class="paragraph-content">
     <% if element.content.present? %>
-    <li>
+    <li data-id="<%= element.id %>" class="element-item">
       <%= element.content %>
       <% else %>
       Click to add content
