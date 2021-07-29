@@ -30,18 +30,18 @@
     <%= form_with(model: [@post, @element], html: { class: 'float-left mr-2'}) do |form| %>
     <%= form.hidden_field :element_type, value: 'paragraph' %>
     <%= button_tag(type: 'submit', class: 'btn btn-info') do %>
-      <i class="fas fa-paragraph"></i>
+      <h5><i class="fas fa-paragraph"></i></h5>
     <% end %>
     <% end %>
 
      <%= form_with(model: [@post, @element]) do |form| %>
     <%= form.hidden_field :element_type, value: 'image' %>
        <%= button_tag(type: 'submit', class: 'btn btn-info') do %>
-      <i class="fas fa-image"></i>
+      <h5> <i class="fas fa-image"></i></h5>
     <% end %>
     <% end %>
   </div>
-  <div class="card">
+  <div class="card mb-5">
     <div class="card-header text-right">
      <% if @post.published? %>
         <span class="badge badge-warning mr-1">
@@ -78,10 +78,12 @@
     <% elsif element.image? %>
     <div class="mb-4 p-3 image">
     <% if element.image.present? %>
+      <%= link_to post_element_path(@post, element), method: :delete, class: 'delete-btn btn btn-dark mt-2 float-right', data: { confirm: "Are you sure?"} do %>
+        <i class="fas fa-times"></i>
+    <% end %>
     <div>
       <%= image_tag(element.image) %> 
       </div>
-    <%= link_to 'Delete', post_element_path(@post, element), method: :delete, class: 'btn btn-danger mt-2 float-right', data: { confirm: "Are you sure?"} %>
       <% else %>
       <%= form_with(model: [@post, element]) do |form| %>
         <%= form.file_field :image %> <br>
