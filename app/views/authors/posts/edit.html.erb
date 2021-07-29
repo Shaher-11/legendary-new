@@ -18,13 +18,24 @@
       <%= form.submit "Paragraph", class: 'btn btn-info' %>
     <% end %>
   </div>
-    <% @post.elements.each do |element| %>
+  <div class="card">
+    <div class="card-body pt-5">
+     <% @post.elements.each do |element| %>
     <% if element.persisted? %>
-       <%= form_with(model: [@post, element]) do |form| %>
-        <%= form.text_area :content %> <br>
-        <%= form.submit "Save", class: 'btn btn-primary' %>
+    <div class="mb-3">
+    <div class="paragraph-content">
+      <%= element.content %>
+    </div>
+    <div class="paragraph-form">
+     <%= form_with(model: [@post, element]) do |form| %>
+        <%= form.rich_text_area :content %> <br>
+        <%= form.submit "Save", class: 'btn btn-primary mt-2' %>
       <% end %>
+      </div>
+    </div>
      <% end %>
     <% end %>
+    </div>
+  </div>
   </div>
 </div>
