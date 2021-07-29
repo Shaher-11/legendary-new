@@ -51,12 +51,16 @@
      <% end %>
     </div>
     <div class="card-body pt-5">
-     <% @post.elements.each do |element| %>
+
+      <ul id="elements">
+
+        <% @post.elements.each do |element| %>
     <% if element.persisted? %>
     <% if element.paragraph? %>
     <div class="mb-4 p-3 paragraph">
     <div class="paragraph-content">
     <% if element.content.present? %>
+    <li>
       <%= element.content %>
       <% else %>
       Click to add content
@@ -94,7 +98,11 @@
     </div>
     <% end %>
     <% end %>
+    </li>
     <% end %>
+
+      </ul>
+     
     </div>
   </div>
   </div>
