@@ -15,6 +15,9 @@ ActiveStorage.start()
 require("trix")
 require("@rails/actiontext")
 
+import '../stylesheets/application'
+
+
 document.addEventListener('turbolinks:load', () => {
   document.addEventListener('click', () => {
     let element = event.target.closest('.paragraph-content')

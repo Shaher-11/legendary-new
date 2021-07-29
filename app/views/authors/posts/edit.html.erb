@@ -22,7 +22,8 @@
     <div class="card-body pt-5">
      <% @post.elements.each do |element| %>
     <% if element.persisted? %>
-    <div class="mb-3 p-3 paragraph">
+    <% if element.paragraph? %>
+    <div class="mb-4 p-3 paragraph">
     <div class="paragraph-content">
     <% if element.content.present? %>
       <%= element.content %>
@@ -38,6 +39,9 @@
       <% end %>
       </div>
     </div>
+    <% elsif element.image? %>
+
+    <% end %>
      <% end %>
     <% end %>
     </div>
