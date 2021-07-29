@@ -13,9 +13,14 @@
   </div>
   <div class="col-md-9">
   <div class="mb-3">
-    <%= form_with(model: [@post, @paragraph]) do |form| %>
+    <%= form_with(model: [@post, @element], html: { class: 'float-left mr-2'}) do |form| %>
     <%= form.hidden_field :element_type, value: 'paragraph' %>
       <%= form.submit "Paragraph", class: 'btn btn-info' %>
+    <% end %>
+
+     <%= form_with(model: [@post, @element]) do |form| %>
+    <%= form.hidden_field :element_type, value: 'image' %>
+      <%= form.submit "Image", class: 'btn btn-info' %>
     <% end %>
   </div>
   <div class="card">
@@ -40,9 +45,19 @@
       </div>
     </div>
     <% elsif element.image? %>
-
+    <div class="image">
+    <% if element.image.present? %>
+      <%= image_tag(element.image) %> 
+      <% else %>
+      <%= form_with(model: [@post, element]) do |form| %>
+        <%= form.file_field :image %> <br>
+        <%= form.submit "Save", class: 'btn btn-primary mt-2' %>
+        <a href="#" class='cancel btn btn-secondary mt-2'>Cancel</a>
+      <% end %>
+      <% end %>
+    </div>
     <% end %>
-     <% end %>
+    <% end %>
     <% end %>
     </div>
   </div>
