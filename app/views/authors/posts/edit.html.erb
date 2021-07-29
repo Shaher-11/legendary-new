@@ -3,9 +3,9 @@
   <div class="col-md-3">
   <%= link_to 'Back', posts_path, class: 'btn btn-secondary mb-3' %>
     <div class="card">
-     <h3 class="card-title text-center">
-        Editing Post
-      </h3>
+    <div class="card-header">
+      <h6 class="card-title text-center"> Editing Post </h6>
+    </div>
       <div class="card-body">
       <%= render 'form', post: @post %>
       </div>
@@ -29,22 +29,28 @@
   <div class="mb-3">
     <%= form_with(model: [@post, @element], html: { class: 'float-left mr-2'}) do |form| %>
     <%= form.hidden_field :element_type, value: 'paragraph' %>
-      <%= form.submit "Paragraph", class: 'btn btn-info' %>
+    <%= button_tag(type: 'submit', class: 'btn btn-info') do %>
+      <i class="fas fa-paragraph"></i>
+    <% end %>
     <% end %>
 
      <%= form_with(model: [@post, @element]) do |form| %>
     <%= form.hidden_field :element_type, value: 'image' %>
-      <%= form.submit "Image", class: 'btn btn-info' %>
+       <%= button_tag(type: 'submit', class: 'btn btn-info') do %>
+      <i class="fas fa-image"></i>
+    <% end %>
     <% end %>
   </div>
   <div class="card">
-    <div class="card-body pt-5">
-    <% if @post.published? %>
+    <div class="card-header text-right">
+     <% if @post.published? %>
         <span class="badge badge-warning mr-1">
-          Published
+         <b> Published</b>
         </span>
-        Published <%= time_ago_in_words(@post.published_at) %> ago
+        <%= time_ago_in_words(@post.published_at) %> ago
      <% end %>
+    </div>
+    <div class="card-body pt-5">
      <% @post.elements.each do |element| %>
     <% if element.persisted? %>
     <% if element.paragraph? %>
