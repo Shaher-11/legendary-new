@@ -23,6 +23,7 @@ StimulusReflex.configure do |config|
   # If you are using Page Morphs and your app uses Rack middleware to rewrite part of the request path, you must enable those middleware modules in StimulusReflex.
   #
   # Learn more about registering Rack middleware in Rails here: https://guides.rubyonrails.org/rails_on_rack.html#configuring-middleware-stack
+  config.on_failed_sanity_checks = :warn
 
   # config.middleware.use FirstRackMiddleware
   # config.middleware.use SecondRackMiddleware
